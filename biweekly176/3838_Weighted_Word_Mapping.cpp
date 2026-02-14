@@ -1,5 +1,5 @@
 /* 3838. Weighted Word Mapping
- https://leetcode.com/contest/biweekly-contest-176/problems/weighted-word-m
+https://leetcode.com/problems/weighted-word-mapping/description
 TC: O(n)
 SC: O(n)
  Implementation problem
