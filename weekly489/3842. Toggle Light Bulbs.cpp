@@ -2,7 +2,7 @@
 3842. Toggle Light Bulbs
 TC: O(NlogN) 
 SC: O(N) 
-
+https://leetcode.com/problems/toggle-light-bulbs/
 The idea is to map the bulbs and map the ones with odd freq,
 as the ones with even freq will be off after x operations on it, x being the freq of that bulb.
 
