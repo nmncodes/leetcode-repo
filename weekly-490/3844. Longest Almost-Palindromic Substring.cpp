@@ -4,7 +4,7 @@
 3844. Longest Almost-Palindromic Substring
 
 the idea is to expand left and right to check palindrome for each index in the string,
-then as we can skip on char we can take an exception of 1 for left and right and expand normally, from the previous stored index
+then as we can skip one char we can take an exception of 1 for left and right and expand normally, from the previous stored index
 
 TC-O(N^2)
 SC-O(1)
