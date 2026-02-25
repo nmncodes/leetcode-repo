@@ -1,0 +1,61 @@
+// jo chota length ke number he unke to saare hi permutation add karlo pow lagake
+// baaki equal length ke liye basic digit dp he
+// TC: O(L * D)
+// SC: O(L)
+// L is number of digits in n , and D is size of digits array
+
+class Solution {
+public:
+    // dp params ==> idx , tight
+    int dp[10][2] ; 
+
+    int helper(vector<int>&  v, vector<int>& res , int idx , int tight) {
+        if(idx == res.size()) {
+            return 1 ;
+        }
+
+        if(dp[idx][tight] != -1) return dp[idx][tight] ; 
+        int ok= 0 ; 
+
+        int limit = tight ? res[idx] : 9 ; 
+
+        for(int d = 0 ; d < v.size() ; d++) {
+            if(v[d] > limit) break;
+            int ntight = tight && (v[d] == limit) ; 
+            ok += helper(v , res , idx + 1, ntight) ;
+        }
+
+        return dp[idx][tight]= ok ; 
+    }
+
+    int atMostNGivenDigitSet(vector<string>& digits, int n) {
+        int sz = digits.size() ; 
+        vector<int>v(sz, 0) ; 
+
+        for(int i = 0 ; i < sz ;i++) {
+            v[i] = digits[i][0] - '0' ; 
+        }
+
+        vector<int>res; 
+        int j = 0 ; 
+        while(n) {
+            int dig = n % 10 ; 
+            res.push_back(dig) ;
+            n/=10;
+            j++ ; 
+        }
+
+        reverse(res.begin() , res.end()) ; 
+
+        memset(dp , -1 , sizeof(dp)) ; 
+
+        int len = res.size() ; 
+        int cnt =0 ; 
+
+        for(int i = 1 ; i < len ;i++) {
+            cnt += pow(sz, i) ; // one aajayega nai to
+        }
+
+      return cnt+ helper(v , res , 0 , 1) ; 
+    }
+};
